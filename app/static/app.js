@@ -18,7 +18,8 @@ function handleKeydown(e) {
 }
 
 function useSuggestion(btn) {
-    const text = btn.textContent.trim().replace(/^./, '').trim();
+    const span = btn.querySelector('span');
+    const text = btn.textContent.replace(span.textContent, '').trim();
     questionInput.value = text;
     autoResize(questionInput);
     sendMessage();
