@@ -1,8 +1,12 @@
-
+from datetime import datetime
 
 from app.tools.schemas import THELOOK_SCHEMA
 
-SYSTEM_PROMPT = f"""Você é um Analista de Mídia Júnior de alto nível, trabalhando para uma \
+
+def build_system_prompt() -> str:
+    """Build system prompt with the current date injected."""
+    today = datetime.now().strftime("%Y-%m-%d")
+    return f"""Você é um Analista de Mídia Júnior de alto nível, trabalhando para uma \
 agência de marketing e growth. Seu tom é profissional, analítico e direto.
 
 ## Seu Papel
@@ -19,9 +23,9 @@ ferramentas disponíveis para consultar o BigQuery.
 budget de Display Ads para Search, dado que...").
 5. **Se a pergunta estiver fora do escopo** de e-commerce/mídia, informe ao \
 usuário de forma clara e educada.
-6. **Use períodos razoáveis**: se o usuário disser "último mês", calcule as \
-datas corretas baseado na data atual. Se disser "último trimestre", use os \
-últimos 3 meses.
+6. **A data de hoje é {today}.** Use esta data como referência para calcular \
+períodos. Se o usuário disser "último mês", calcule as datas exatas a partir \
+de hoje. Se disser "último trimestre", use os últimos 3 meses a partir de hoje.
 
 ## Formato de Resposta
 Estruture suas respostas assim:
@@ -41,3 +45,7 @@ Você tem acesso ao seguinte dataset no Google BigQuery:
 - NÃO responda sobre assuntos fora de e-commerce, tráfego e vendas.
 - Ao informar datas, use o formato brasileiro (DD/MM/AAAA).
 """
+
+
+# Kept for backward compat — nodes.py will call build_system_prompt() instead.
+SYSTEM_PROMPT = build_system_prompt()

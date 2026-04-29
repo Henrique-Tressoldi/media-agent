@@ -12,7 +12,7 @@ import logging
 from langchain_core.messages import SystemMessage
 from langchain_google_genai import ChatGoogleGenerativeAI
 
-from app.agent.prompts import SYSTEM_PROMPT
+from app.agent.prompts import build_system_prompt
 from app.agent.state import AgentState
 from app.config import settings
 from app.tools.bigquery_tools import ALL_TOOLS
@@ -25,7 +25,7 @@ def _get_llm() -> ChatGoogleGenerativeAI:
     llm = ChatGoogleGenerativeAI(
         model=settings.model_name,
         api_key=settings.gemini_api_key,
-        temperature=0.3,
+        temperature=0,
         retries=2,
     )
     return llm.bind_tools(ALL_TOOLS)
@@ -42,7 +42,7 @@ def agent_node(state: AgentState) -> dict:
 
     has_system = any(isinstance(m, SystemMessage) for m in messages)
     if not has_system:
-        messages = [SystemMessage(content=SYSTEM_PROMPT)] + list(messages)
+        messages = [SystemMessage(content=build_system_prompt())] + list(messages)
 
     try:
         response = llm.invoke(messages)
