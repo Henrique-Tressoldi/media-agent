@@ -1,0 +1,14 @@
+services:
+  api:
+    build: .
+    container_name: casemonks-api
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+      # Garantir que o credentials.json está sendo mapeado corretamente se especificado pelo dotenv
+    environment:
+      - GOOGLE_APPLICATION_CREDENTIALS=/app/credentials.json
+    restart: unless-stopped

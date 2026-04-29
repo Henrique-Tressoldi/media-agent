@@ -1,8 +1,4 @@
-"""System prompts for the media analyst agent.
 
-The prompt is kept separate from code logic to follow the separation of
-concerns principle required by the case evaluation criteria.
-"""
 
 from app.tools.schemas import THELOOK_SCHEMA
 

@@ -133,6 +133,24 @@ O servidor estará disponível em: `http://localhost:8000`
 
 ---
 
+## 🐳 Executando com Docker (Alternativa Fácil)
+
+Você também pode subir o ambiente usando o **Docker Compose**. Isso resolve quaisquer dependências e é excelente para testes rápidos no processo de avaliação corporativa.
+
+### 1. Construa e Inicie os Containers
+Certifique-se apenas de ter feito os passos 4 e 5 (adicionar `.env` e `credentials.json`) na raiz do projeto, então rode:
+
+```bash
+docker compose up -d --build
+```
+
+### 2. Acesse a Aplicação
+O servidor da API e a interface estarão rodando na mesma porta mapeada localmente: `http://localhost:8000`
+
+Para parar a execução rode `docker compose down`.
+
+---
+
 ## 📡 Endpoints da API
 
 ### `POST /chat`

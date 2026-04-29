@@ -42,9 +42,4 @@ Ao iniciar o projeto:
 3.  Crie uma estrutura de pastas seguindo Clean Architecture ou MVC.
 4.  Documente o fluxo do agente em um diagrama `mermaid.js` no README.
 
----
 
-### Análise Estratégica do Conselheiro
-O maior risco deste projeto é a **alucinação de SQL**. Para mitigar isso, certifique-se de que a IA que desenvolverá o código forneça o esquema exato das tabelas no prompt das ferramentas de consulta. Se o agente tentar adivinhar nomes de colunas que não existem no `thelook_ecommerce`, o projeto falhará no critério de "Engenharia de Dados". 
-
-Você vai seguir com a implementação agora ou quer que eu revise a estrutura de pastas proposta pela IA antes de você começar?
