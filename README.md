@@ -182,10 +182,6 @@ Envia uma pergunta ao agente.
 
 Health check do serviço.
 
-### Documentação Interativa
-
-- **Swagger UI**: `http://localhost:8000/docs`
-- **ReDoc**: `http://localhost:8000/redoc`
 
 ---
 
